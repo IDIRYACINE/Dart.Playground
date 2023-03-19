@@ -14,3 +14,15 @@ BinarySearchAlgorithm<EventResolver<BaseEvent>, int>
     eventResolverBinarySearch() {
   return BinarySearchAlgorithm<EventResolver, int>(EventResolverComparator());
 }
+
+class BaseServiceComparator
+    extends BinarySearchComparator<BaseService, int> {
+  BaseServiceComparator()
+      : super(
+            isGreaterThan: (source, target) => source.serviceId > target,
+            isLessThan: (source, target) => source.serviceId < target);
+}
+
+BinarySearchAlgorithm<BaseService<BaseEvent>, int> serviceBinarySearch() {
+  return BinarySearchAlgorithm<BaseService, int>(BaseServiceComparator());
+}
